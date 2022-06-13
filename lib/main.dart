@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   //通知の初期化
   final notification = FlutterLocalNotificationsPlugin();
   notification
       .initialize(
         const InitializationSettings(
           iOS: IOSInitializationSettings(),
+          android: AndroidInitializationSettings('@mipmap/ic_launcher'),
         ),
       )
-      .then((_) =>
-          notification.show(0, "title", "body", const NotificationDetails()));
+      .then((_) => notification.show(
+          0,
+          "テスト通知",
+          "通知の内容",
+          const NotificationDetails(
+            android: AndroidNotificationDetails("channelId", "channelName"),
+          )));
   runApp(const MyApp());
 }
 
