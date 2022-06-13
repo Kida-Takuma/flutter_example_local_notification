@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-void main() {
+Future main() async {
+  //通知の初期化
+  final notification = FlutterLocalNotificationsPlugin();
+  notification
+      .initialize(
+        const InitializationSettings(
+          iOS: IOSInitializationSettings(),
+        ),
+      )
+      .then((_) =>
+          notification.show(0, "title", "body", const NotificationDetails()));
   runApp(const MyApp());
 }
 
