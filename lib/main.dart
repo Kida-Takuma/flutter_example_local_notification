@@ -51,7 +51,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var time_text = "ここに設定した時間が表示されます";
-  void _incrementCounter() async {
+  void _setNotification() async {
     final DateTime? date = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _setNotification,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
